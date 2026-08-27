@@ -37,7 +37,7 @@
   @media (prefers-reduced-motion:reduce){[data-marquee]{overflow-x:auto}[data-marquee] .mtrack{animation:none}}
   @media (max-width:860px){
     [data-hero-grid]{grid-template-columns:1fr !important;padding-top:64px !important;padding-bottom:72px !important;gap:36px !important}
-    [data-about-grid],[data-updates-grid],[data-tourn-grid],[data-donate-grid],[data-stats-grid],[data-contact-grid]{grid-template-columns:1fr !important}
+    [data-about-grid],[data-updates-grid],[data-fiji-grid],[data-tourn-grid],[data-donate-grid],[data-stats-grid],[data-contact-grid]{grid-template-columns:1fr !important}
     [data-stats-grid] > div{border:none !important;padding:18px 0 !important}
     [data-stats-grid] > div + div{border-top:1px solid rgba(11,41,66,.12) !important}
     [data-schol-grid],[data-sports-grid]{grid-template-columns:1fr 1fr !important}
@@ -91,7 +91,11 @@
 <section id="top" style="position:relative;background:#0B2942;color:#F5F0E6;overflow:hidden;padding:0">
   <div data-anim="drift" style="position:absolute;inset:-140px;z-index:0;pointer-events:none;animation:scDrift 26s linear infinite">{{ stickField }}</div>
   <div style="position:absolute;left:0;right:0;bottom:0;height:34%;z-index:1;background:linear-gradient(to top,rgba(196,98,45,.34),rgba(196,98,45,.06) 55%,transparent);pointer-events:none"></div>
-  
+  <a href="#updates" onMouseEnter="{{ hoverDraw }}" onMouseLeave="{{ hoverReset }}" style="position:absolute;top:22px;right:24px;z-index:3;display:inline-flex;align-items:center;gap:8px;font:700 11px Figtree,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#0B2942;background:#E8A94D;padding:10px 18px 10px 14px;border-radius:999px;box-shadow:0 6px 18px rgba(232,169,77,.35)">
+    <span style="width:7px;height:7px;border-radius:50%;background:#C4622D;flex:none;animation:pulseStar 2s ease-in-out infinite"></span>
+    What's new →
+  </a>
+
 
   
 
@@ -284,7 +288,7 @@ Arizona Marshallese Community <span style="font-style:italic;color:#E8A94D">(AMC
         </div>
         <h3 style="font:600 19px/1.2 Fraunces,serif;color:#0B2942;margin:0 0 9px">{{ s.title }}</h3>
         <p style="font:400 13.5px/1.6 Figtree,sans-serif;color:rgba(11,41,66,.72);margin:0 0 18px;flex:1">{{ s.body }}</p>
-        <a href="{{ s.href }}" target="_blank" rel="noopener" style="font:700 13px Figtree,sans-serif;color:#C4622D">{{ s.cta }} →</a>
+        <a href="{{ s.href }}" target="{{ s.target }}" rel="{{ s.rel }}" style="font:700 13px Figtree,sans-serif;color:#C4622D">{{ s.cta }} →</a>
         {{ cardStroke }}
       </article>
     </sc-for>
@@ -307,35 +311,54 @@ Arizona Marshallese Community <span style="font-style:italic;color:#E8A94D">(AMC
       </a>
     </div>
 
-    <div style="display:grid;grid-template-columns:1.3fr .7fr;gap:26px" data-updates-grid="">
-      <div style="display:flex;flex-direction:column;gap:18px">
-        <sc-for list="{{ news }}" as="n" hint-placeholder-count="4">
-          <article data-reveal="" onMouseEnter="{{ hoverDraw }}" onMouseLeave="{{ hoverReset }}" style="position:relative;overflow:hidden;display:flex;gap:20px;background:rgba(245,240,230,.05);border:1px solid rgba(232,169,77,.18);border-radius:14px;padding:22px">
-            <div style="flex:none;width:60px;text-align:center">
-              <div style="font:700 26px/1 Fraunces,serif;color:#E8A94D">{{ n.day }}</div>
-              <div style="font:600 10px Figtree,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,230,.6);margin-top:3px">{{ n.mon }}</div>
-            </div>
-            <div style="flex:1">
-              <div style="font:600 9.5px Figtree,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#C4622D;margin-bottom:7px">{{ n.tag }}</div>
-              <h3 style="font:600 19px/1.25 Fraunces,serif;margin:0 0 8px">{{ n.title }}</h3>
-              <p style="font:400 14px/1.6 Figtree,sans-serif;color:rgba(245,240,230,.78);margin:0 0 10px">{{ n.body }}</p>
-              <a href="{{ n.href }}" target="_blank" rel="noopener" style="font:700 12.5px Figtree,sans-serif;color:#E8A94D">{{ n.cta }} →</a>
-            </div>
-            {{ cardStroke }}
-          </article>
-        </sc-for>
-      </div>
-
-      <aside data-reveal="" style="background:linear-gradient(160deg,rgba(196,98,45,.16),rgba(11,41,66,.2));border:1px solid rgba(232,169,77,.25);border-radius:16px;padding:26px;align-self:start">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
-          <span style="width:38px;height:38px;border-radius:9px;background:#F5F0E6;color:#0B2942;display:grid;place-items:center;font:700 20px Figtree,sans-serif">f</span>
-          <div style="font:600 15px Fraunces,serif">On Facebook</div>
+    <div data-reveal="" data-fiji-grid="" style="max-width:900px;margin:0 auto 40px;background:rgba(245,240,230,.08);border:1px solid rgba(232,169,77,.3);border-radius:18px;padding:24px;display:grid;grid-template-columns:.85fr 1.15fr;gap:26px;align-items:center">
+      <img src="assets/fiji-night.jpg" alt="Fiji Independence Day Island Night flyer — Saturday, October 3, 2026, 6:30 PM to Midnight, Solei Reception Hall, Phoenix" style="width:100%;height:100%;max-height:420px;object-fit:cover;border-radius:12px;display:block" />
+      <div>
+        <div style="font:600 10px Figtree,sans-serif;letter-spacing:.28em;text-transform:uppercase;color:#E8A94D;margin-bottom:10px">Partner Event · Fijian Association of Arizona</div>
+        <h3 style="font:600 24px/1.25 Fraunces,serif;margin:0 0 12px;color:#F5F0E6">Island Night: A Fiji Independence Day Celebration</h3>
+        <p style="font:400 15px/1.65 Figtree,sans-serif;color:rgba(245,240,230,.85);margin:0 0 18px">Our friends at the Fijian Association of Arizona are hosting Island Night in honor of Fiji Independence Day — a celebration of culture and community for the whole family. New venue, same great soqo. Come out and support our fellow Pacific Islander community.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px">
+          <div style="background:rgba(11,41,66,.35);border-radius:12px;padding:16px">
+            <div style="font:600 9.5px Figtree,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#E8A94D;margin-bottom:6px">When</div>
+            <div style="font:600 15px Fraunces,serif;color:#F5F0E6">Saturday, October 3, 2026</div>
+            <div style="font:400 14px Figtree,sans-serif;color:rgba(245,240,230,.8)">6:30 PM – Midnight</div>
+          </div>
+          <div style="background:rgba(11,41,66,.35);border-radius:12px;padding:16px">
+            <div style="font:600 9.5px Figtree,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#E8A94D;margin-bottom:6px">Where</div>
+            <div style="font:600 15px Fraunces,serif;color:#F5F0E6">Solei Reception Hall</div>
+            <div style="font:400 14px Figtree,sans-serif;color:rgba(245,240,230,.8)">2902 W Van Buren St, Suite 7A, Phoenix</div>
+          </div>
         </div>
-        <p style="font:400 13.5px/1.6 Figtree,sans-serif;color:rgba(245,240,230,.8);margin:0 0 18px">We post announcements, event flyers, and photos on Facebook first. Follow the page to stay up to date.</p>
-        <a href="{{ fbUrl }}" target="_blank" rel="noopener" style="display:block;text-align:center;font:700 13px Figtree,sans-serif;letter-spacing:.04em;color:#0B2942;background:#E8A94D;padding:13px;border-radius:999px;margin-bottom:12px">Open the AMC page</a>
-        <div style="font:400 11px/1.5 Figtree,sans-serif;color:rgba(245,240,230,.5);text-align:center">facebook.com/ArizonaMarshalleseCommunity</div>
-      </aside>
+        <a href="https://www.facebook.com/photo?fbid=1370044645304904&set=a.405722901737088" target="_blank" rel="noopener" style="font:700 12.5px Figtree,sans-serif;color:#E8A94D">See on Facebook →</a>
+      </div>
     </div>
+
+    <sc-for list="{{ news }}" as="n" hint-placeholder-count="0">
+      <article data-reveal="" onMouseEnter="{{ hoverDraw }}" onMouseLeave="{{ hoverReset }}" style="position:relative;overflow:hidden;max-width:760px;margin:0 auto 18px;display:flex;gap:20px;background:rgba(245,240,230,.05);border:1px solid rgba(232,169,77,.18);border-radius:14px;padding:22px">
+        <div style="flex:none;width:60px;text-align:center">
+          <div style="font:700 26px/1 Fraunces,serif;color:#E8A94D">{{ n.day }}</div>
+          <div style="font:600 10px Figtree,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,230,.6);margin-top:3px">{{ n.mon }}</div>
+        </div>
+        <div style="flex:1">
+          <div style="font:600 9.5px Figtree,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#C4622D;margin-bottom:7px">{{ n.tag }}</div>
+          <h3 style="font:600 19px/1.25 Fraunces,serif;margin:0 0 8px">{{ n.title }}</h3>
+          <p style="font:400 14px/1.6 Figtree,sans-serif;color:rgba(245,240,230,.78);margin:0 0 10px">{{ n.body }}</p>
+          <a href="{{ n.href }}" target="_blank" rel="noopener" style="font:700 12.5px Figtree,sans-serif;color:#E8A94D">{{ n.cta }} →</a>
+        </div>
+        {{ cardStroke }}
+      </article>
+    </sc-for>
+
+    <aside data-reveal="" style="max-width:760px;margin:0 auto;background:linear-gradient(160deg,rgba(196,98,45,.16),rgba(11,41,66,.2));border:1px solid rgba(232,169,77,.25);border-radius:16px;padding:26px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px">
+      <div style="display:flex;align-items:center;gap:14px">
+        <span style="width:38px;height:38px;border-radius:9px;background:#F5F0E6;color:#0B2942;display:grid;place-items:center;font:700 20px Figtree,sans-serif;flex:none">f</span>
+        <div>
+          <div style="font:600 15px Fraunces,serif;margin-bottom:4px">On Facebook</div>
+          <p style="font:400 13.5px/1.5 Figtree,sans-serif;color:rgba(245,240,230,.8);margin:0">We post announcements, event flyers, and photos on Facebook first.</p>
+        </div>
+      </div>
+      <a href="{{ fbUrl }}" target="_blank" rel="noopener" style="flex:none;font:700 13px Figtree,sans-serif;letter-spacing:.04em;color:#0B2942;background:#E8A94D;padding:13px 22px;border-radius:999px">Open the AMC page</a>
+    </aside>
   </div>
 </section>
 
@@ -365,21 +388,9 @@ Arizona Marshallese Community <span style="font-style:italic;color:#E8A94D">(AMC
         <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(58,95,79,.82),rgba(42,72,60,.78))"></div>
       </div>
       <div style="position:relative;z-index:1">
-      <div style="font:600 10px Figtree,sans-serif;letter-spacing:.28em;text-transform:uppercase;color:#E8A94D;margin-bottom:10px">Back to School Tournament</div>
-      <h3 style="font:600 24px/1.25 Fraunces,serif;margin:0 0 12px;color:#F5F0E6">Women's volleyball and youth basketball, plus a day of fun for the kids</h3>
-      <p style="font:400 15px/1.65 Figtree,sans-serif;color:rgba(245,240,230,.85);margin:0 0 18px">Join us August 1, 2026 from noon to 4pm at Escalante Community Center. We're running a women's volleyball tournament and a youth basketball tournament, five teams per sport, first come first served. Kids can jump into activities throughout the day, grab free lemonade courtesy of Raising Cane's, and pick up free school supplies while they last.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px">
-        <div style="background:rgba(11,41,66,.35);border-radius:12px;padding:16px">
-          <div style="font:600 9.5px Figtree,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#E8A94D;margin-bottom:6px">Basketball sign up</div>
-          <div style="font:600 15px Fraunces,serif;color:#F5F0E6">Yashu Lanki</div>
-          <div style="font:400 14px Figtree,sans-serif;color:rgba(245,240,230,.8)">808 275 6981</div>
-        </div>
-        <div style="background:rgba(11,41,66,.35);border-radius:12px;padding:16px">
-          <div style="font:600 9.5px Figtree,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#E8A94D;margin-bottom:6px">Volleyball sign up</div>
-          <div style="font:600 15px Fraunces,serif;color:#F5F0E6">Kuma Felix</div>
-          <div style="font:400 14px Figtree,sans-serif;color:rgba(245,240,230,.8)">623 955 1013</div>
-        </div>
-      </div>
+      <div style="font:600 10px Figtree,sans-serif;letter-spacing:.28em;text-transform:uppercase;color:#E8A94D;margin-bottom:10px">Back to School Tournament · Thank You</div>
+      <h3 style="font:600 24px/1.25 Fraunces,serif;margin:0 0 12px;color:#F5F0E6">Thank you to everyone who came out!</h3>
+      <p style="font:400 15px/1.65 Figtree,sans-serif;color:rgba(245,240,230,.85);margin:0 0 18px">On August 1, 2026, we hosted our 2nd Annual Back to School Tournament at Escalante Community Center, with women's volleyball, youth basketball, backpacks and school supplies, free lemonade courtesy of Raising Cane's, and a full day of family fun. Thank you to every family, player, and volunteer who showed up and made it a great day for our kids — and a special thank you to everyone who helped organize, run games, and keep things going behind the scenes. We couldn't do it without you.</p>
       <div style="margin-top:20px;padding-top:18px;border-top:1px solid rgba(245,240,230,.15)">
         <p style="font:600 10px Figtree,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,230,.6);margin:0 0 14px">With thanks to our sponsors</p>
         <div style="display:flex;flex-wrap:wrap;gap:26px;align-items:center">
@@ -744,10 +755,7 @@ class Component extends DCLogic {
       {name:'Joslyn Gasper-Joran',role:'Community Liaison',bio:'The one running our social media, and our link to partners around Arizona. Find her at every event, greeting everyone with IAKWE!',portrait:this.initialsEl('Joslyn Gasper-Joran','#C4622D','#F5F0E6')}
     ];
 
-    const news=[
-      {day:'12',mon:'Jul',tag:'Relief Drive',title:'Chuuk relief drive: Super Typhoon Sinlaku',body:'We\u2019re collecting for Micronesian families who lost homes and clean water. Drop-off and donation info is down in the Donate section.',cta:'See on Facebook',href:'https://www.facebook.com/share/p/1G4Get3RYT/?mibextid=wwXIfr'},
-      {day:'01',mon:'Aug',tag:'Community Event',title:'2nd Annual Back to School Event',body:'Backpacks and school supplies for the kids, plus basketball and volleyball, food, and family fun at Escalante Community Center. Everyone is welcome. See our Facebook for details.',cta:'See on Facebook',href:'https://www.facebook.com/share/p/19NzzAfFQ1/?mibextid=wwXIfr'}
-    ];
+    const news=[];
 
     const communityLinks=[
       {badge:'AMC Program',badgeColor:'#3A5F4F',deadline:'Year-round',title:'Need a Tutor?',body:'Stuck on an assignment or getting ready for an exam? Reach out and we\u2019ll connect your child with a tutor who can help.',cta:'Contact us',href:'#contact',target:'_self',rel:''},
@@ -758,10 +766,11 @@ class Component extends DCLogic {
       {badge:'Partner',badgeColor:'#C4622D',deadline:'Learn more',title:'Ronjake Autism Support Network',body:'Support and resources for Marshallese families raising children with autism, from a fellow Marshallese nonprofit.',cta:'Visit their website',href:'http://www.ronjakeautism.org',target:'_blank',rel:'noopener'}
     ];
     const educationLinks=[
-      {badge:'Financial Aid',badgeColor:'#3A5F4F',deadline:'Opens each fall',title:'FAFSA: Federal Student Aid',body:'Free federal aid for college and trade school. Many Marshallese students qualify under COFA, and this is the first step.',cta:'Start your FAFSA',href:'https://studentaid.gov/h/apply-for-aid/fafsa'},
-      {badge:'Apply',badgeColor:'#3A5F4F',deadline:'Apply online',title:'Arizona State University',body:'Apply to ASU, one of Arizona\u2019s largest universities, with strong support for first-generation and Pacific Islander students.',cta:'Apply to ASU',href:'https://admission.asu.edu/apply'},
-      {badge:'Apply',badgeColor:'#3A5F4F',deadline:'Apply online',title:'University of Arizona',body:'Apply to the University of Arizona in Tucson, with resources for transfer, first-generation, and COFA students.',cta:'Apply to UArizona',href:'https://www.arizona.edu/admissions/apply'},
-      {badge:'Apply',badgeColor:'#3A5F4F',deadline:'Apply online',title:'Grand Canyon University',body:'Apply to GCU in Phoenix, a private university with flexible on-campus and online degree programs.',cta:'Apply to GCU',href:'https://www.gcu.edu/admissions'}
+      {badge:'AMC Program',badgeColor:'#3A5F4F',deadline:'Year-round',title:'Need a Tutor?',body:'Stuck on an assignment or getting ready for an exam? Reach out and we’ll connect your child with a tutor who can help.',cta:'Contact us',href:'#contact',target:'_self',rel:''},
+      {badge:'Financial Aid',badgeColor:'#3A5F4F',deadline:'Opens each fall',title:'FAFSA: Federal Student Aid',body:'Free federal aid for college and trade school. Many Marshallese students qualify under COFA, and this is the first step.',cta:'Start your FAFSA',href:'https://studentaid.gov/h/apply-for-aid/fafsa',target:'_blank',rel:'noopener'},
+      {badge:'Apply',badgeColor:'#3A5F4F',deadline:'Apply online',title:'Arizona State University',body:'Apply to ASU, one of Arizona\u2019s largest universities, with strong support for first-generation and Pacific Islander students.',cta:'Apply to ASU',href:'https://admission.asu.edu/apply',target:'_blank',rel:'noopener'},
+      {badge:'Apply',badgeColor:'#3A5F4F',deadline:'Apply online',title:'University of Arizona',body:'Apply to the University of Arizona in Tucson, with resources for transfer, first-generation, and COFA students.',cta:'Apply to UArizona',href:'https://www.arizona.edu/admissions/apply',target:'_blank',rel:'noopener'},
+      {badge:'Apply',badgeColor:'#3A5F4F',deadline:'Apply online',title:'Grand Canyon University',body:'Apply to GCU in Phoenix, a private university with flexible on-campus and online degree programs.',cta:'Apply to GCU',href:'https://www.gcu.edu/admissions',target:'_blank',rel:'noopener'}
     ];
 
     const sports=Object.keys(tData).map(k=>({label:tData[k].label,select:()=>set({tab:k}),tabStyle:this.styleStr(this.tabStyle(this.state.tab===k))}));
